@@ -1,0 +1,1 @@
+Setup worker node(s) for mapreduce

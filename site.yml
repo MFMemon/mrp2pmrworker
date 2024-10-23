@@ -1,0 +1,16 @@
+- hosts: all
+
+  tasks:
+    - name: Transfer the mapreduce deployment script
+      copy: src=runmrnode.sh dest=/tmp/ mode=0777
+   
+    - name: Create file for mapreduce worker logs
+      ansible.builtin.file:
+        path: /tmp/mrmasterrun_{{index . 0}}.logs
+        state: touch
+
+    - name: Pull mapreduce binary and start master node
+      ansible.builtin.shell: >
+        nohup /tmp/runmrnode.sh {{index . 1}} {{index . 2}} {{index . 3}}
+        {{index . 4}} {{index . 5}} {{index . 6}} {{index . 7}}  </dev/null >/tmp/fsmasterrun.logs 2>&1 &
+      become: true
