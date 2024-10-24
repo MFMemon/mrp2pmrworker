@@ -12,5 +12,5 @@
     - name: Pull mapreduce binary and start master node
       ansible.builtin.shell: >
         nohup /tmp/runmrnode.sh {{index . 1}} {{index . 2}} {{index . 3}}
-        {{index . 4}} {{index . 5}} {{index . 6}} {{index . 7}}  </dev/null >/tmp/fsmasterrun.logs 2>&1 &
+        {{index . 4}} {{index . 5}} {{index . 6}} {{index . 7}}  </dev/null >/tmp/mrworkerrun_{{index . 0}}.logs 2>&1 &
       become: true
