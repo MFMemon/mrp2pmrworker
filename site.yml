@@ -6,7 +6,7 @@
    
     - name: Create file for mapreduce worker logs
       ansible.builtin.file:
-        path: /tmp/mrmasterrun_{{index . 0}}.logs
+        path: /tmp/mrworkerrun_{{index . 0}}.logs
         state: touch
 
     - name: Pull mapreduce binary and start master node
